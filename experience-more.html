@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concord — Experience More</title>
+<meta name="description" content="Explore more room settings and styling ideas from the Concord collection.">
+<style>
+@font-face{font-family:"Cormorant Garamond";font-weight:400;font-display:swap;src:url(fonts/cormorant-garamond-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:600;font-display:swap;src:url(fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:300;font-display:swap;src:url(fonts/jost-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:400;font-display:swap;src:url(fonts/jost-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:500;font-display:swap;src:url(fonts/jost-latin-500-normal.woff2) format("woff2")}
+</style>
+<style>
+  :root {
+    --bg: #17120e;
+    --bg-soft: #211a14;
+    --text: #f1e9dc;
+    --muted: #a99d8c;
+    --brass: #c09a58;
+    --line: rgba(193, 154, 88, .28);
+    --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --sans: "Jost", "Helvetica Neue", Arial, system-ui, sans-serif;
+    box-sizing: border-box;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+    padding-bottom: env(safe-area-inset-bottom, 0px); }
+  img { display: block; max-width: 100%; }
+
+  /* ---------- Hero ---------- */
+  .hero { min-height: 62svh; display: grid; place-items: center; text-align: center;
+    padding: calc(env(safe-area-inset-top, 0px) + 4rem) 1.5rem 3rem;
+    background:
+      radial-gradient(90% 60% at 50% 0%, rgba(192, 154, 88, .16), transparent 70%),
+      var(--bg); }
+  .eyebrow { font-size: .78rem; letter-spacing: .42em; text-transform: uppercase; color: var(--brass); margin: 0 0 1.4rem; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.8rem, 11vw, 5.4rem);
+    line-height: 1.02; margin: 0; letter-spacing: .01em; }
+  h1 em { font-style: italic; color: var(--brass); }
+  .rule { width: 3.2rem; height: 1px; background: var(--brass); margin: 1.8rem auto; border: 0; }
+  .lede { max-width: 30rem; margin: 0 auto; color: var(--muted); font-size: 1.02rem; }
+  .materials { margin: 1.6rem 0 0; font-size: .74rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted); }
+  .materials span + span::before { content: "·"; margin: 0 .7em; color: var(--brass); }
+
+  /* ---------- Gallery ---------- */
+  main { max-width: 1180px; margin: 0 auto; padding: 1rem 1rem 4rem; }
+  .gallery { columns: 2; column-gap: .75rem; }
+  @media (min-width: 760px) { .gallery { columns: 3; column-gap: 1rem; } main { padding-inline: 1.5rem; } }
+  .tile { break-inside: avoid; margin: 0 0 .75rem; position: relative; overflow: hidden;
+    background: var(--bg-soft); border: 0; padding: 0; width: 100%; display: block; cursor: zoom-in; color: inherit; font: inherit; text-align: start; }
+  @media (min-width: 760px) { .tile { margin-bottom: 1rem; } }
+  .tile img { width: 100%; height: auto; transition: transform .7s ease, opacity .6s ease; opacity: 0; }
+  .tile img.ready { opacity: 1; }
+  .tile:hover img, .tile:focus-visible img { transform: scale(1.035); }
+  .tile .cap { position: absolute; inset-inline: 0; bottom: 0; padding: 2.2rem .9rem .8rem;
+    background: linear-gradient(to top, rgba(10, 7, 5, .82), transparent);
+    font-size: .8rem; letter-spacing: .04em; opacity: 0; transform: translateY(6px); transition: opacity .35s, transform .35s; }
+  .tile:hover .cap, .tile:focus-visible .cap { opacity: 1; transform: none; }
+  @media (hover: none) { .tile .cap { opacity: 1; transform: none; } }
+  .tile.placeholder { cursor: default; display: grid; place-items: center; text-align: center;
+    border: 1px dashed var(--line); color: var(--muted); padding: 1rem; }
+  .tile.placeholder .ph { font-family: var(--serif); font-size: 1.15rem; letter-spacing: .04em; }
+  .tile.placeholder small { display: block; font-size: .7rem; letter-spacing: .24em; text-transform: uppercase; margin-top: .4rem; color: var(--brass); }
+
+  /* ---------- CTA + footer ---------- */
+  .cta { text-align: center; padding: 1rem 1.5rem 4rem; }
+  .btn { display: inline-block; text-decoration: none; color: var(--bg); background: var(--brass);
+    padding: .95rem 2rem; font-size: .8rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 500;
+    transition: background .25s; }
+  .btn:hover { background: #d3ad6c; }
+  .cta p { color: var(--muted); font-size: .9rem; margin: 0 0 1.4rem; }
+  footer { border-top: 1px solid var(--line); text-align: center; padding: 2rem 1.5rem 3rem;
+    color: var(--muted); font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; }
+  footer b { color: var(--brass); font-weight: 400; }
+
+  /* ---------- Lightbox ---------- */
+  #lb { position: fixed; inset: 0; z-index: 10; background: rgba(10, 7, 5, .96); display: none;
+    flex-direction: column; align-items: center; justify-content: center; padding: 3.5rem 1rem 4.5rem; touch-action: pan-y; }
+  #lb.open { display: flex; }
+  #lb { padding: 3.5rem 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem); }
+  #lb img { max-width: 100%; flex: 1 1 auto; min-height: 0; object-fit: contain; }
+  #lbCap { text-align: center; color: var(--muted); font-size: .85rem; letter-spacing: .04em; padding: .8rem 1rem 0; }
+  .ar-row { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: .9rem; }
+  .btn-ar { position: relative; text-decoration: none; text-align: center; color: var(--bg); background: var(--brass);
+    padding: .75rem 1.2rem; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; }
+  .btn-ar:hover { background: #d3ad6c; }
+  .btn-ar img { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .badge { position: absolute; top: .6rem; inset-inline-end: .6rem; padding: .2rem .55rem; font-size: .62rem;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--bg); background: var(--brass); }
+  .shop { width: 100%; max-width: 760px; margin-top: .9rem; border-top: 1px solid var(--line); padding-top: .8rem; }
+  .shop-title { font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--brass); margin-bottom: .6rem; text-align: center; }
+  .shop-list { display: flex; gap: .6rem; overflow-x: auto; justify-content: safe center; padding-bottom: .3rem; }
+  .prod { flex: 0 0 auto; display: flex; align-items: center; gap: .7rem; min-width: 11rem; max-width: 15rem;
+    padding: .55rem .8rem; border: 1px solid var(--line); background: rgba(255,255,255,.03);
+    color: var(--text); text-decoration: none; font-size: .85rem; line-height: 1.3; }
+  a.prod:hover { border-color: var(--brass); }
+  .prod img { flex: 0 0 auto; width: 2.8rem; height: 2.8rem; object-fit: cover; background: var(--bg-soft); }
+  .prod .arrow { margin-inline-start: auto; color: var(--brass); font-size: 1.1rem; }
+  .prod .soon { margin-inline-start: auto; color: var(--muted); font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; }
+  .lbbtn { position: absolute; background: transparent; border: 1px solid var(--line); color: var(--text);
+    width: 2.8rem; height: 2.8rem; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: grid; place-items: center; }
+  .lbbtn:hover { border-color: var(--brass); color: var(--brass); }
+  #lbClose { top: calc(env(safe-area-inset-top, 0px) + .8rem); inset-inline-end: .9rem; }
+  #lbPrev { inset-inline-start: .7rem; top: 50%; transform: translateY(-50%); }
+  #lbNext { inset-inline-end: .7rem; top: 50%; transform: translateY(-50%); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .tile img, .tile .cap { transition: none; }
+  }
+</style>
+<meta name="theme-color" content="#111111">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+<a href="index.html" style="position:fixed;top:max(10px,env(safe-area-inset-top));left:10px;z-index:99999;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font:600 13px Tahoma,Arial,sans-serif;text-decoration:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">‹ فهرست</a>
+
+<header class="hero">
+  <div>
+    <p class="eyebrow">The Concord Collection</p>
+    <h1>Experience <em>More</em></h1>
+    <hr class="rule">
+    <p class="lede">Step beyond the page. See how Concord settles into a real room — paired, layered and styled.</p>
+    <p class="materials"><span>Cognac leather</span><span>Walnut</span><span>Brushed brass</span></p>
+  </div>
+</header>
+
+<main>
+  <div class="gallery" id="gallery" aria-label="Concord room settings"></div>
+</main>
+
+<section class="cta" id="cta" hidden>
+  <p>Place the Concord armchair in your own space, at true scale.</p>
+  <a class="btn" id="ctaLink" href="#">View in your room</a>
+</section>
+
+<footer><b>Concord</b> &nbsp;·&nbsp; Experience More</footer>
+
+<!-- Lightbox -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lbbtn" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lbbtn" id="lbPrev" aria-label="Previous image">&lsaquo;</button>
+  <img id="lbImg" alt="">
+  <button class="lbbtn" id="lbNext" aria-label="Next image">&rsaquo;</button>
+  <div id="lbCap"></div>
+  <div class="ar-row" id="lbAr" hidden>
+    <a class="btn-ar" id="lbArAndroid" href="#">See it in your room &middot; Android</a>
+    <a class="btn-ar" id="lbArIOS" rel="ar" href="#">
+      <img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      See it in your room &middot; iPhone
+    </a>
+  </div>
+  <div class="shop" id="lbShop" hidden>
+    <div class="shop-title">Shop this look</div>
+    <div class="shop-list" id="lbShopList"></div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   EDIT ONLY THIS SECTION
+   - Put your photos in an "images" folder next to this file.
+   - One line per image. "ratio" is only used for the "coming soon" tile
+     shown until the real photo exists (width/height, e.g. "4/5", "1/1").
+   - "glb" and "usdz" are optional: ONE file pair per arrangement, containing
+     the whole styled set (all 2-3 products placed together as in the photo).
+     glb = Android, usdz = iPhone. Leave them out and the AR buttons simply
+     don't appear for that image.
+   - "products" is optional. Each product shows under the photo in the
+     viewer: name, "url" = the product's purchase page (leave "" until
+     the link exists), "thumb" = small product photo (optional).
+   - To add an image later: add a line, upload the photo. That's it.
+   ===================================================================== */
+const IMAGES = [
+  { src: "images/concord-01.jpg", caption: "Accent chair, side table and ottoman in a sunlit living corner", ratio: "1/1",
+    glb: "ar/setting-01.glb", usdz: "ar/setting-01.usdz",
+    products: [
+      { name: "Concord Accent Chair", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_accent_chair.html", thumb: "" },
+      { name: "Concord Side Table", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_side_table.html", thumb: "" },
+      { name: "Concord Style Completion", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_style_completion.html", thumb: "" }
+    ] },
+  { src: "images/concord-02.jpg", caption: "Leather ottoman with a brass C-table, styled by the fireplace", ratio: "1/1",
+    glb: "ar/setting-02.glb", usdz: "ar/setting-02.usdz",
+    products: [
+      { name: "Concord Style Completion", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_style_completion.html", thumb: "" }
+    ] },
+  { src: "images/concord-03.jpg", caption: "Two accent chairs in navy around a round coffee table", ratio: "1/1",
+    glb: "ar/setting-03.glb", usdz: "ar/setting-03.usdz",
+    products: [
+      { name: "Concord Accent Chair", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_accent_chair.html", thumb: "" },
+      { name: "Concord Coffee Table", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_coffee_table.html", thumb: "" }
+    ] },
+  { src: "images/concord-04.jpg", caption: "Navy feature wall with accent chair and round coffee table", ratio: "1/1",
+    products: [
+      { name: "Concord Accent Chair", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_accent_chair.html", thumb: "" },
+      { name: "Concord Coffee Table", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_coffee_table.html", thumb: "" }
+    ] },
+  { src: "images/concord-05.jpg", caption: "Cognac leather lounge with slope-arm sofa, armchair and coffee table", ratio: "1/1",
+    products: [
+      { name: "Concord Slope-Arm Sofa", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_slope_arm_sofa.html", thumb: "" },
+      { name: "Concord Coffee Table", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_coffee_table.html", thumb: "" },
+      { name: "Concord Style Completion", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_style_completion.html", thumb: "" },
+      { name: "Concord Armchair", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_armchair.html", thumb: "" }
+    ] },
+  { src: "images/concord-06.jpg", caption: "Light living room with navy accent chair and walnut coffee table", ratio: "1024/652",
+    products: [
+      { name: "Concord Accent Chair", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_accent_chair.html", thumb: "" },
+      { name: "Concord Coffee Table", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_coffee_table.html", thumb: "" },
+      { name: "Concord Style Completion", url: "https://fatemehzn85-byte.github.io/concord-offline/concord_style_completion.html", thumb: "" }
+    ] }
+];
+
+// Optional "View in your room" button (AR page). Leave "" to hide it.
+const AR_LINK = "concord_armchair.html";
+/* ===================================================================== */
+
+const $ = id => document.getElementById(id);
+const gallery = $("gallery");
+const loaded = [];                       // indexes of images that actually exist
+
+function placeholder(item) {
+  const d = document.createElement("div");
+  d.className = "tile placeholder";
+  d.style.aspectRatio = item.ratio || "4/5";
+  d.innerHTML = '<div><div class="ph">Concord</div><small>Coming soon</small></div>';
+  return d;
+}
+
+IMAGES.forEach((item, i) => {
+  const btn = document.createElement("button");
+  btn.className = "tile";
+  btn.setAttribute("aria-label", "Open image: " + (item.caption || "Concord"));
+  const img = new Image();
+  img.alt = item.caption || "Concord collection";
+  img.loading = "lazy";
+  img.decoding = "async";
+  img.onload = () => { img.classList.add("ready"); loaded.push(i); loaded.sort((a, b) => a - b); };
+  img.onerror = () => btn.replaceWith(placeholder(item));
+  img.src = item.src;
+  btn.appendChild(img);
+  if (item.caption) {
+    const cap = document.createElement("span");
+    cap.className = "cap";
+    cap.textContent = item.caption;
+    btn.appendChild(cap);
+  }
+  if (item.glb || item.usdz) {
+    const b = document.createElement("span");
+    b.className = "badge"; b.textContent = "AR";
+    btn.appendChild(b);
+  }
+  btn.addEventListener("click", () => openLb(i));
+  gallery.appendChild(btn);
+});
+
+if (AR_LINK) { $("ctaLink").href = AR_LINK; $("cta").hidden = false; }
+
+/* ---------- Lightbox ---------- */
+let cur = 0, lastFocus = null;
+function show(i) {
+  cur = i;
+  const item = IMAGES[i];
+  $("lbImg").src = item.src;
+  $("lbImg").alt = item.caption || "";
+  $("lbCap").textContent = item.caption || "";
+  setAr(item);
+  renderShop(item.products);
+  const many = loaded.length > 1;
+  $("lbPrev").hidden = $("lbNext").hidden = !many;
+}
+const abs = p => new URL(p, location.href).href;
+function setAr(item) {
+  const a = $("lbArAndroid"), i = $("lbArIOS");
+  a.hidden = !item.glb;
+  i.hidden = !item.usdz;
+  $("lbAr").hidden = !(item.glb || item.usdz);
+  if (item.glb) {
+    a.href = "intent://arvr.google.com/scene-viewer/1.0?file=" + encodeURIComponent(abs(item.glb)) +
+      "&mode=ar_only&resizable=false&title=" + encodeURIComponent(item.caption || "Concord") +
+      "#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;" +
+      "S.browser_fallback_url=" + encodeURIComponent(location.href) + ";end;";
+  }
+  if (item.usdz) i.href = item.usdz + "#allowsContentScaling=0";
+}
+function renderShop(products) {
+  const list = $("lbShopList");
+  list.textContent = "";
+  if (!products || !products.length) { $("lbShop").hidden = true; return; }
+  products.forEach(p => {
+    const el = document.createElement(p.url ? "a" : "div");
+    el.className = "prod";
+    if (p.url) { el.href = p.url; el.target = "_blank"; el.rel = "noopener"; }
+    if (p.thumb) {
+      const t = new Image(); t.alt = ""; t.src = p.thumb;
+      t.onerror = () => t.remove();
+      el.appendChild(t);
+    }
+    const n = document.createElement("span");
+    n.textContent = p.name;
+    el.appendChild(n);
+    const tail = document.createElement("span");
+    tail.className = p.url ? "arrow" : "soon";
+    tail.textContent = p.url ? "\u2192" : "Soon";
+    el.appendChild(tail);
+    list.appendChild(el);
+  });
+  $("lbShop").hidden = false;
+}
+function step(dir) {
+  if (loaded.length < 2) return;
+  const pos = loaded.indexOf(cur);
+  show(loaded[(pos + dir + loaded.length) % loaded.length]);
+}
+function openLb(i) {
+  lastFocus = document.activeElement;
+  show(i);
+  $("lb").classList.add("open");
+  document.body.style.overflow = "hidden";
+  $("lbClose").focus();
+}
+function closeLb() {
+  $("lb").classList.remove("open");
+  document.body.style.overflow = "";
+  if (lastFocus) lastFocus.focus();
+}
+$("lbClose").onclick = closeLb;
+$("lbPrev").onclick = () => step(-1);
+$("lbNext").onclick = () => step(1);
+$("lb").addEventListener("click", e => { if (e.target === $("lb")) closeLb(); });
+document.addEventListener("keydown", e => {
+  if (!$("lb").classList.contains("open")) return;
+  if (e.key === "Escape") closeLb();
+  if (e.key === "ArrowLeft") step(-1);
+  if (e.key === "ArrowRight") step(1);
+});
+let sx = null;
+$("lb").addEventListener("pointerdown", e => { sx = e.clientX; });
+$("lb").addEventListener("pointerup", e => {
+  if (sx === null) return;
+  const dx = e.clientX - sx; sx = null;
+  if (Math.abs(dx) > 60) step(dx < 0 ? 1 : -1);
+});
+</script>
+<!-- AR Android: اول WebXR (داخل Chrome)، اگر نشد همان لینک Scene Viewer. آیفون دست‌نخورده است. -->
+<script src="model-viewer-umd.min.js"></script>
+<model-viewer id="arMv" ar ar-modes="webxr" ar-scale="fixed" loading="eager" alt=""
+  style="position:fixed;right:0;bottom:0;width:2px;height:2px;opacity:.01;pointer-events:none"></model-viewer>
+<script>
+(function(){
+  if (!/Android/i.test(navigator.userAgent)) return;
+  var mv = document.getElementById('arMv');
+  var btn = document.getElementById('lbArAndroid');
+  if (!mv || !btn) return;
+  var xr = false;
+  if (navigator.xr && navigator.xr.isSessionSupported) {
+    navigator.xr.isSessionSupported('immersive-ar').then(function(ok){ xr = ok; }).catch(function(){});
+  }
+  var orig = window.setAr;
+  window.setAr = function(item){
+    orig(item);
+    var MV = customElements.get("model-viewer"); if (MV) MV.dracoDecoderLocation = new URL("draco/", location.href).href;
+    if (item && item.glb) { mv.src = item.glb; }
+  };
+  btn.addEventListener('click', function(e){
+    if (xr && mv.src && mv.canActivateAR) {
+      e.preventDefault();
+      try { mv.activateAR(); } catch (err) { location.href = btn.getAttribute('href'); }
+    }
+  });
+})();
+</script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){});}</script>
+</body>
+</html>
